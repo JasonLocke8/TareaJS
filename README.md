@@ -1,4 +1,4 @@
-# Tareas (by Nicolás Gonzlez) 
+# Tareas (by Nicolás González) 
 
 ## CoderHouse - JavaScript 
 - Camada 19990
