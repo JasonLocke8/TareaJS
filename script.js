@@ -1,16 +1,8 @@
-let num = parseInt(prompt("Ingrese un número entre 10 y 20 (inclusive): "));
+let num = parseInt(prompt("Ingrese un número: "));
 
-while (num<10 | num>20){
+let iva = num*(1.22);
 
-    num = parseInt(prompt("Número incorrecto, porfavor ingrese un número entre 10 y 20 (inclusive): "));
-}
+let resto = (iva-resto);
 
-let mensaje = prompt("Ingrese un mensaje que quiera repetir: ")
-
-for(  i = 0 ;  i < num ; i = i + 1 ){
-
-    console.log(mensaje); 
-
-}
-
-alert("Mensaje repetido " + num + " veces en consola.");
+alert("El iva es " + resto);
+alert("El precio con IVA incluido es: "+ iva)
