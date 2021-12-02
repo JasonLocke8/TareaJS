@@ -14,7 +14,6 @@ const usuario3 = new usuario ("juan","1122", "masculino");
 const usuario4 = new usuario ("ana", "2222", "femenino");
 
 let usuariosIngresados = ["nico","pablo","juan","ana",];
-let nombreUser;
 let sexoUser;
 
 function login(){  
@@ -67,7 +66,7 @@ function ordenarUsers(){
 
 function cambiarNombre(){
 
-    nombreUser = prompt("Ingrese su nombre: ");
+    let nombreUser = prompt("Ingrese su nombre: ");
     console.log(sexoUser);
     document.getElementById("nombre").innerHTML=("Hola, "+nombreUser+"!");
 
