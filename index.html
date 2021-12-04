@@ -12,7 +12,7 @@
     
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Arcane Hospital Center</a>
+          <a class="navbar-brand" href="index.html">Arcane Hospital Center</a>
           <button class="navbar-toggler">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -33,7 +33,7 @@
             </ul>
           </div>
           <form class="d-flex">
-            <button class="btn btn-outline-primary btn-sm">Sign In</button>
+            <a class="btn btn-outline-primary btn-sm" href="pages/signin.html">Sign In</a>
         </form>
         </div>
         
@@ -44,7 +44,7 @@
         <div class="container">
             <form action="">
                 <div class="mb-3">
-                  <label class="form-label">Usuario</label>
+                  <label class="form-label">Email</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                   <div id="emailHelp" class="form-text">No compartiremos tu correo con nadie.</div>
                 </div>
@@ -56,10 +56,10 @@
                   <input type="checkbox" class="form-check-input" id="exampleCheck1">
                   <label class="form-check-label">Recuérdame</label>
                 </div>
-                <input class="btn btn-primary" type="submit" onclick="login();" value="Enviar">
+                <input class="btn btn-primary" type="button" onclick="login();" id="boton" value="Enviar">
               </form>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">¿Necesitas registrarte?</a>
+            <a class="dropdown-item" href="pages/signin.html">¿Necesitas registrarte?</a>
             <a class="dropdown-item" href="#">¿Olvidaste tu contraseña?</a>
           </div>
 

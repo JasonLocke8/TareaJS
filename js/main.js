@@ -1,85 +1,63 @@
 //La idea es hacer un Login, con una pequeña tienda. Todo ambientado en un Hospital con diferentes planes médicos.
 
-function usuario(user, contrasena, sexo) {
-    this.user = user;
-    this.contrasena = contrasena;
-    this.sexo = sexo;
-};
+    function usuariosNuevos(nombre, apellido, email, password, sexo) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.password = password;
+        this.sexo = sexo;
+    };
 
-let usuariosAdmins = ["nico","juan"];
+// Al presionar la tecla 'Enter' valida el formulario de login
 
-const usuario1 = new usuario ("nico","1234", "masculino");
-const usuario2 = new usuario ("pablo","4321", "masculino");
-const usuario3 = new usuario ("juan","1122", "masculino");
-const usuario4 = new usuario ("ana", "2222", "femenino");
+    window.addEventListener("keypress", function(e){
 
-let usuariosIngresados = ["nico","pablo","juan","ana",];
-let sexoUser;
+        if ( e.key == "Enter"){
+            login();
+        }
+    }
+    )
 
-function login(){  
+// Función que registra los datos de una persona en un string para posteriormente guardarlo como JSON
+    function registro(){
 
-    //Guardo en variables distintas los campos ingresados en la página
-    
-    var user = document.getElementById("exampleInputEmail1").value;
-    var contrasena = document.getElementById("exampleInputPassword1").value;
-    
-    //Fijarse si el usuario está en la lista de usuarios admins (Pueden crear otros usuarios en la página)
+        let nombre = document.getElementById("inputNombre").value;
+        let apellido = document.getElementById("inputApellido").value;
+        let email = document.getElementById("inputEmail").value;
+        let password = document.getElementById("inputPassword").value;
+        let sexo = document.getElementById("inputSexo").value;
 
-    let existeUser = usuariosAdmins.find(user => user=user);
-    console.log(existeUser);
-    console.log(usuariosAdmins);
-    let quepag;
+        const usuarioNuevo = new usuariosNuevos (nombre, apellido, email, password, sexo);
 
-    if (user != existeUser ){
-        console.log("Usuario no Admin");
-        quepag = "pages/principal.html";
-    } else {
-        console.log("Usuario Admin");
-        quepag = "pages/principal.html";
+        let usuarioJSON = JSON.stringify(usuarioNuevo);
+
+        localStorage.setItem("usuarioNuevo", usuarioJSON);
+
     }
 
-    //Fijarse si la contraseña es la de dicho usuario
+// Función que valida el Login
+    function login(){
 
-    if (user=="" && contrasena=="") { 
-        alert("Ingrese los datos!");
-    } else if (user==usuario1.user && contrasena==usuario1.contrasena) { 
-        window.location=quepag;
-        sexoUser=usuario1.sexo;
-    } else if (user==usuario2.user && contrasena==usuario2.contrasena) { 
-        window.location=quepag;
-        sexoUser=usuario2.sexo; 
-    } else if (user==usuario3.user && contrasena==usuario3.contrasena) { 
-        window.location=quepag;
-        sexoUser=usuario3.sexo;
-    } else if (user==usuario4.user && contrasena==usuario4.contrasena) { 
-        window.location=quepag;
-        sexoUser=usuario4.sexo;
-    };
+        let json = localStorage.usuarioNuevo;
+        let usuarioString = JSON.parse(json);
 
-    };
+        let user = document.getElementById("exampleInputEmail1").value;
+        let contrasena = document.getElementById("exampleInputPassword1").value;
 
-function ordenarUsers(){
-    //Funcion que ordena alfabeticamente todos los usuarios para posteriormente mostrarlos en la pagina
-    usuariosIngresados.sort();
-    console.log(usuariosIngresados);
-};
+        if (user == usuarioString.email && contrasena == usuarioString.password){
+            localStorage.setItem("usuarioActual", usuarioString.nombre);
+            window.location="pages/principal.html";
+        }
+    }
 
-function cambiarNombre(){
+// Función que cambia el titulo de bienvenida con el nombre del usuario
 
-    let nombreUser = prompt("Ingrese su nombre: ");
-    console.log(sexoUser);
-    document.getElementById("nombre").innerHTML=("Hola, "+nombreUser+"!");
+    function cambioNombre(){
 
-    //El console.log muestra undefined ya que al ejecutarse de vuelta el script, se borran las variables
-
-    // if(sexoUser = "masculino"){
-    //     document.getElementById("descripcion").innerHTML=("Bienvenido a la página oficial de Arcane Hospital Center");
-    // } else if (sexoUser = "femenino") {
-    //     document.getElementById("descripcion").innerHTML=("Bienvenida a la página oficial de Arcane Hospital Center");
-    // } else {
-    //     document.getElementById("descripcion").innerHTML=("Bienvenido/a a la página oficial de Arcane Hospital Center");
-    // };
-    
-};
+        let userActual = localStorage.getItem("usuarioActual");
+        document.getElementById("nombre").innerHTML = "Hola, "+userActual+"!";
+        
+    }
 
     
+
