@@ -41,8 +41,8 @@
         let json = localStorage.usuarioNuevo;
         let usuarioString = JSON.parse(json);
 
-        let user = document.getElementById("exampleInputEmail1").value;
-        let contrasena = document.getElementById("exampleInputPassword1").value;
+        let user = document.getElementById("email_address").value;
+        let contrasena = document.getElementById("password").value;
 
         if (user == usuarioString.email && contrasena == usuarioString.password){
             localStorage.setItem("usuarioActual", usuarioString.nombre);
